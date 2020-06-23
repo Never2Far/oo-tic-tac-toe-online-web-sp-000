@@ -144,21 +144,6 @@ end
  elsif won?
    puts "Congratulations #{winner}!"
 end
-
-# def play
-#   until over?
-#     turn
-#   end
-
-
 end
-# def play
-#   count = 0
-#  while count < 9
-#    turn
-#    count += 1
-#  end
-# end
-
 
 end
