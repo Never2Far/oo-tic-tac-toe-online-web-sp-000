@@ -144,7 +144,7 @@ end
  elsif won?
    puts "Congratulations #{winner}!"
 end
-end
+
 # def play
 #   until over?
 #     turn
