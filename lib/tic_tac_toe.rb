@@ -73,10 +73,10 @@ WIN_COMBINATIONS = [
   end
 
   def current_player
-    if turn_count(@board).even?
+    if turn_count.even?
     #if (turn_count(board) % 2) == 0
       return "X"
-    elsif turn_count(@board).odd?
+    elsif turn_count.odd?
     #elsif (turn_count(board) % 2) != 0
       return "O"
     end
