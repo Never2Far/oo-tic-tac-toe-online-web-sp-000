@@ -110,7 +110,7 @@ end
 
 
 def draw?
-  if full?(@board) && !won?(@board)
+  if full? && !won?
     return true
   else
     return false
@@ -118,7 +118,7 @@ def draw?
 end
 
 def over?
-if full?(@board) || won?(@board) || draw?(@board)
+if full? || won? || draw?
   return true
 else
   return false
@@ -126,8 +126,8 @@ end
 end
 
 def winner
-  if won?(@board)
-    return @board[won?(@board)[0]]
+  if won?
+    return @board[won?[0]]
 else
     return nil
   end
