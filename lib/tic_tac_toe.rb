@@ -38,8 +38,8 @@ WIN_COMBINATIONS = [
     !(@board[index].nil? || @board[index] == " ")
   end
 
-  def valid_move?(board, index)
-    if index.between?(0, 8) && !position_taken?(board, index)
+  def valid_move?(index)
+    if index.between?(0, 8) && !position_taken?(@board, index)
       return true
     else
       return false
@@ -72,99 +72,65 @@ WIN_COMBINATIONS = [
     return count
   end
 
-  def current_player(board)
-    if turn_count(board).even?
+  def current_player
+    if turn_count(@board).even?
     #if (turn_count(board) % 2) == 0
       return "X"
-    elsif turn_count(board).odd?
+    elsif turn_count(@board).odd?
     #elsif (turn_count(board) % 2) != 0
       return "O"
     end
   end
 
+  def won?
 
-end
+    exes = @board.each_index.select{ |i| @board[i] == "X"}
+    ohs = @board.each_index.select{ |i| @board[i] == "O"}
 
-
-
-
-end
-# Helper Method
-
-
-
+    experms = exes.permutation(3).to_a
+    ohperms = ohs.permutation(3).to_a
+    x_winning_index = WIN_COMBINATIONS.detect{ |win_combo| experms.include?(win_combo) }
+    o_winning_index = WIN_COMBINATIONS.detect{ |win_combo| ohperms.include?(win_combo) }
 
 
-def won?(board)
-
-  exes = board.each_index.select{ |i| board[i] == "X"}
-  ohs = board.each_index.select{ |i| board[i] == "O"}
-
-  experms = exes.permutation(3).to_a
-  ohperms = ohs.permutation(3).to_a
-  x_winning_index = WIN_COMBINATIONS.detect{ |win_combo| experms.include?(win_combo) }
-  o_winning_index = WIN_COMBINATIONS.detect{ |win_combo| ohperms.include?(win_combo) }
-
-
-  if (!!x_winning_index && !!o_winning_index)
-    return false
-  elsif x_winning_index
-       return x_winning_index
-  elsif o_winning_index
-       return o_winning_index
+    if (!!x_winning_index && !!o_winning_index)
+      return false
+    elsif x_winning_index
+         return x_winning_index
+    elsif o_winning_index
+         return o_winning_index
+      end
     end
-  end
 
-def full?(board)
-return board.none? {|i| (i == " ") || (i == "")}
+end
+
+def full?
+  return @board.none? {|i| (i == " ") || (i == "")}
 end
 
 
-def draw?(board)
-  if full?(board) && !won?(board)
+def draw?
+  if full?(@board) && !won?(@board)
     return true
   else
     return false
   end
 end
 
-def over?(board)
-if full?(board) || won?(board) || draw?(board)
+def over?
+if full?(@board) || won?(@board) || draw?(@board)
   return true
 else
   return false
 end
 end
 
-def winner(board)
-  if won?(board)
-    return board[won?(board)[0]]
-  #elsif won?(board)[0] == "O"
-    #return "O"
-  #elsif won?(board)[0] == "X"
+def winner
+  if won?(@board)
+    return @board[won?(@board)[0]]
 else
     return nil
   end
 end
 
-def turn_count(board)
-  count = 0
-  board.each do |space|
-    if (space == "X") || (space == "O")
-      count += 1
-    end
-  end
-  return count
 end
-
-def current_player(board)
-  if turn_count(board).even?
-  #if (turn_count(board) % 2) == 0
-    return "X"
-  elsif turn_count(board).odd?
-  #elsif (turn_count(board) % 2) != 0
-    return "O"
-  end
-end
-
-board = [" "," "," "," "," "," "," "," "," "]
