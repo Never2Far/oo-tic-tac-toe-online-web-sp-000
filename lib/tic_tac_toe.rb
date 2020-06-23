@@ -102,7 +102,7 @@ WIN_COMBINATIONS = [
       end
     end
 
-end
+
 
 def full?
   @board.none? {|i| (i == " ") || (i == "")}
@@ -131,4 +131,6 @@ def winner
 else
     return nil
   end
+end
+
 end
