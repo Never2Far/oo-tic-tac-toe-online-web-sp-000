@@ -133,11 +133,24 @@ else
   end
 end
 
-
 def play
-  until over?
-    turn
-  end
+  count = 0
+ while ((count < 9) && !over?)
+   turn
+   count += 1
+end
+  if draw?
+    puts "Cat's Game!"
+ elsif won?
+   puts "Congratulations #{winner}!"
+end
+end
+# def play
+#   until over?
+#     turn
+#   end
+
+  
 end
 # def play
 #   count = 0
