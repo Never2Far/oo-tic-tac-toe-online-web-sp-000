@@ -57,7 +57,7 @@ WIN_COMBINATIONS = [
       puts "The location you entered is already occupied."
       turn
     else
-      @board = move(input, current_player)
+      move(input, current_player)
       display_board
     end
   end
