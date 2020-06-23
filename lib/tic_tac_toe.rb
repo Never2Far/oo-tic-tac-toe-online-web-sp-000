@@ -136,7 +136,7 @@ end
 def play
   count = 0
  while count < 9
-   turn(board)
+   turn
    count += 1
  end
 end
