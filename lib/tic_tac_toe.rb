@@ -105,7 +105,7 @@ WIN_COMBINATIONS = [
 end
 
 def full?
-  return @board.none? {|i| (i == " ") || (i == "")}
+  @board.none? {|i| (i == " ") || (i == "")}
 end
 
 
