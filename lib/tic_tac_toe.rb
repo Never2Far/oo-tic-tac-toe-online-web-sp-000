@@ -133,13 +133,19 @@ else
   end
 end
 
+
 def play
-  count = 0
- while count < 9
-   turn
-   count += 1
- end
+  until over?
+    turn
+  end
 end
+# def play
+#   count = 0
+#  while count < 9
+#    turn
+#    count += 1
+#  end
+# end
 
 
 end
