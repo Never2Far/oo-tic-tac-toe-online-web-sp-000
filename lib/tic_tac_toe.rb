@@ -150,7 +150,7 @@ end
 #     turn
 #   end
 
-  
+
 end
 # def play
 #   count = 0
